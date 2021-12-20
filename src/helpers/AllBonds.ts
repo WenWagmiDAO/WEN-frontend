@@ -112,7 +112,7 @@ export const ohm_dai = new LPBond({
 // Old ohm_dai
 export const ohm_dai_old = new LPBond({
   name: "wen_dai_lp_old",
-  displayName: "WEN-DAI LP",
+  displayName: "WEN-DAI LP (old)",
   bondToken: "DAI",
   isAvailable: { [NetworkID.Mainnet]: true },
   bondIconSvg: OhmDaiImg,
