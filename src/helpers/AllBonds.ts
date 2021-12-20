@@ -132,7 +132,7 @@ export const ohm_dai_old = new LPBond({
     "https://spookyswap.finance/add/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/0x86D7BcCB91B1c5A01A7aD7D7D0eFC7106928c7F8",
 });
 
-// HOW TO ADD A NEW BOND:
+// HOW TO ADD A NEW BOND (uwu):
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
