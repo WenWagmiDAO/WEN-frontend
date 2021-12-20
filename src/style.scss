@@ -1,0 +1,135 @@
+* {
+  outline: none;
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+html,
+body,
+#root {
+  font-family: "Square";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+  z-index: 1;
+  background-size: cover;
+  font-family: "Square";
+  overflow: hidden;
+  transition: all ease 0.33ms;
+  background: radial-gradient(at 2% 96%, #2349e1 0, transparent 57%),
+  radial-gradient(at 94% 90%, #00ebe7 0, transparent 58%),
+  radial-gradient(at 100% 58%, #6de397 0, transparent 40%),
+  radial-gradient(at 99% 21%, #feca62 0, transparent 52%),
+  radial-gradient(at 75% 9%, #ffb861 0, transparent 52%),
+  radial-gradient(at 61% 3%, #ff6669 0, transparent 16%),
+  radial-gradient(at 14% 14%, #fa1986 0, transparent 95%);
+}
+
+.MuiDrawer-paperAnchorDockedLeft {
+  border-right: 0 !important;
+  box-shadow: 9px 0px 0px #ff666b73;
+}
+
+.ohm-card {
+  max-width: 833px;
+  .card-header {
+    width: 100%;
+    min-height: 33px;
+    margin-bottom: 10px;
+    h5 {
+      font-weight: 600 !important;
+    }
+  }
+
+  .help-text {
+    margin: 10px 0px;
+  }
+
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 12px 0px;
+  }
+
+  .data-row-centered {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin: 12px 0px;
+    .marginedBtn {
+      margin: 0.3rem;
+    }
+  }
+}
+
+.ohm-pairs {
+  display: flex;
+  align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield !important;
+}
+
+a:hover svg {
+  color: inherit;
+}
+
+.MuiPaper-root.ohm-card {
+  background-color: #282727 !important;
+}
+.MuiPaper-root.ohm-menu{
+  background: linear-gradient(77.58deg, #FF666B 0%, #E04FB6 130.36%) !important;
+}
+
+.MuiButton-containedPrimary {
+  background: linear-gradient(77.58deg, #FF666B 0%, #E04FB6 130.36%) !important;
+  box-shadow: none;
+}
+
+.MuiButton-containedPrimary:hover{
+  box-shadow: 0px 0px 5px 3px #ab8b154d !important;
+}
+
+
+.jss11 .MuiPaper-root, .MuiDrawer-paper:before, .sidebar .MuiDrawer-paper:before {
+  background-color: #ff666b !important;
+  background-image: linear-gradient(333deg, #e15a195c 0%, #00000000 50%, #e52084b5 100%) !important;
+}
+
+
+path.recharts-curve.recharts-line-curve {
+  stroke: #00ff9d;
+  color: #00ff9d;
+ }
+
+ .bond-discounts>p {
+  color: #282727 !important;
+}
+
+.MuiLink-root:hover {
+  text-decoration: none;
+  color: #f1e3a7 !important;
+}
