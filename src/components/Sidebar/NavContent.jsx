@@ -19,12 +19,15 @@ import StarIcon from "@material-ui/icons/Stars";
 import HomeIcon from "@material-ui/icons/Home";
 import Tooltip from "@material-ui/core/Tooltip";
 import "./sidebar.scss";
+import useENS from "src/hooks/useENS";
+import Davatar from "@davatar/react";
 
 function NavContent() {
   const [isActive] = useState();
   const address = useAddress();
   const { chainID } = useWeb3Context();
   const { bonds } = useBonds(chainID);
+  const { ensName } = useENS(address);
 
   const checkPage = useCallback((match, location, page) => {
     const currentPath = location.pathname.replace("/", "");
@@ -57,8 +60,9 @@ function NavContent() {
 
             {address && (
               <div className="wallet-link">
+                <Davatar size={20} address={address} style={{ marginRight: 8 }} generatedAvatarType="jazzicon" />
                 <Link href={`https://ftmscan.com/address/${address}`} target="_blank">
-                  {shorten(address)}
+                  {ensName || shorten(address)}
                 </Link>
               </div>
             )}
