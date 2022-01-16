@@ -396,7 +396,7 @@ function Stake() {
                               <TxnButtonText
                                 pendingTransactions={pendingTransactions}
                                 type="unstaking"
-                                defaultText={<Trans>Unstake {OHM_TICKER}</Trans>}
+                                defaultText={<Trans>Unstake WEN</Trans>}
                               />
                             </Button>
                           </Box>

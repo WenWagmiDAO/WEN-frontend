@@ -1,5 +1,5 @@
 export const THE_GRAPH_URL = "https://api.thegraph.com/subgraphs/name/macepapacrypto/wensubgraphv2"; // change this wagmis when deployed
-export const THE_GRAPH_URL_ETH = "https://api.thegraph.com/subgraphs/name/exodiafinance/exodia-eth-treasury";
+export const THE_GRAPH_URL_ETH = "https://api.thegraph.com/subgraphs/name/exodiafinance/exodia-eth-treasury";  // TODO: this is why the treasury shows NaN in the Bonds page
 export const EPOCH_INTERVAL = 300;
 
 // NOT USED ANY MORE: Fetched from the blockchain `useAppSelector(state => state.app.blockRateSeconds)`
