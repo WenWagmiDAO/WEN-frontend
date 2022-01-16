@@ -62,8 +62,6 @@ const PersonalExodChart = ({
           minimumFractionDigits: 2,
         }).format(data[0][mode]);
 
-  console.log(`Profits: ${profits}`);
-
   return (
     <Chart
       type="line"
