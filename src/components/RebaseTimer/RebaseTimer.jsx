@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getRebaseBlock, secondsUntilBlock, prettifySeconds } from "../../helpers";
+import { prettifySeconds } from "../../helpers";
 import { Box, Typography } from "@material-ui/core";
 import "./rebasetimer.scss";
 import { Skeleton } from "@material-ui/lab";
@@ -17,12 +17,12 @@ function RebaseTimer() {
   const [rebaseString, setRebaseString] = useState("");
   const [secondsToRefresh, setSecondsToRefresh] = useState(SECONDS_TO_REFRESH);
 
-  const currentBlock = useSelector(state => {
-    return state.app.currentBlock;
+  const currentBlockTime = useSelector(state => {
+    return state.app.currentBlockTime;
   });
 
-  const endBlock = useSelector(state => {
-    return state.app.endBlock;
+  const endTime = useSelector(state => {
+    return state.app.endTime;
   });
 
   const blockRateSeconds = useSelector(state => {
@@ -30,8 +30,7 @@ function RebaseTimer() {
   });
 
   function initializeTimer() {
-    const rebaseBlock = endBlock;
-    const seconds = secondsUntilBlock(currentBlock, rebaseBlock, blockRateSeconds);
+    const seconds = endTime- currentBlockTime;
     setSecondsToRebase(seconds);
     const prettified = prettifySeconds(seconds);
     setRebaseString(prettified !== "" ? prettified : <Trans>Less than a minute</Trans>);
@@ -39,13 +38,13 @@ function RebaseTimer() {
 
   // This initializes secondsToRebase as soon as currentBlock becomes available
   useMemo(() => {
-    if (currentBlock) {
+    if (currentBlockTime) {
       initializeTimer();
     }
-  }, [currentBlock]);
+  }, [currentBlockTime]);
 
   // After every period SECONDS_TO_REFRESH, decrement secondsToRebase by SECONDS_TO_REFRESH,
-  // keeping the display up to date without requiring an on chain request to update currentBlock.
+  // keeping the display up to date without requiring an on chain request to update currentBlockTime.
   useEffect(() => {
     let interval = null;
     if (secondsToRefresh > 0) {
@@ -74,7 +73,7 @@ function RebaseTimer() {
   return (
     <Box className="rebase-timer">
       <Typography variant="body2">
-        {currentBlock ? (
+        {currentBlockTime ? (
           secondsToRebase > 0 ? (
             <>
               <strong>{rebaseString}&nbsp;</strong>

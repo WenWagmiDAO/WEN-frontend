@@ -1,8 +1,8 @@
 import { BigNumber, BigNumberish, ethers } from "ethers";
 import { addresses } from "../constants";
 import { abi as ierc20Abi } from "../abi/IERC20.json";
-import { abi as sOHMv2 } from "../abi/sOhmv2.json";
-import { abi as wsOHM } from "../abi/wsOHM.json";
+import { abi as sOHMv2 } from "../abi/MemoContract.json";
+import { abi as wsOHM } from "../abi/wMemoContract.json";
 
 import { setAll } from "../helpers";
 

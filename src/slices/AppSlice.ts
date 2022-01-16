@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import { addresses, EPOCH_INTERVAL } from "../constants";
-import { abi as OlympusStakingv2ABI } from "../abi/OlympusStakingv2.json";
-import { abi as sOHMv2 } from "../abi/sOhmv2.json";
+import { abi as OlympusStakingv2ABI } from "../abi/StakingContract.json";
+import { abi as sOHMv2 } from "../abi/MemoContract.json";
 import { setAll, getTokenPrice, getMarketPrice } from "../helpers";
 import apollo from "../lib/apolloClient";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
@@ -48,28 +48,31 @@ export const loadAppDetails = createAsyncThunk(
       sohmMainContract.circulatingSupply(),
       stakingContract.index(),
     ]);
+    const block = await provider.getBlock(currentBlock);
+    const currentBlockTime = block.timestamp;
 
     const blockFifteenEpochsAgo = await provider.getBlock(currentBlock - EPOCH_INTERVAL * 15);
     const blockRateSeconds =
       (Date.now() / 1000 - blockFifteenEpochsAgo.timestamp) / (currentBlock - blockFifteenEpochsAgo.number);
 
     // Calculating staking
-    const nRebasesFiveDays = (86400 * 5) / (blockRateSeconds * EPOCH_INTERVAL);
-    const nRebasesYear = (86400 * 365) / (blockRateSeconds * EPOCH_INTERVAL);
+    const nRebasesFiveDays = (86400 * 5) / EPOCH_INTERVAL;
+    const nRebasesYear = (86400 * 365) / EPOCH_INTERVAL;
     const stakingReward = epoch.distribute;
     const stakingRebase = Number(stakingReward.toString()) / Number(circ.toString());
     const fiveDayRate = Math.pow(1 + stakingRebase, nRebasesFiveDays) - 1;
     const stakingAPY = Math.pow(1 + stakingRebase, nRebasesYear) - 1;
-    const endBlock = epoch.endBlock;
+    const endTime = epoch.endTime;
 
     console.log(`Fantom Block Rate: ${blockRateSeconds} seconds`);
     return {
       currentIndex: ethers.utils.formatUnits(currentIndex, "gwei"),
       currentBlock,
+      currentBlockTime,
       fiveDayRate,
       stakingAPY,
       stakingRebase,
-      endBlock,
+      endTime,
       blockRateSeconds,
     } as IAppData;
   },
@@ -185,6 +188,7 @@ interface IAppData {
   readonly circSupply?: number;
   readonly currentIndex?: string;
   readonly currentBlock?: number;
+  readonly currentBlockTime?: number;
   readonly fiveDayRate?: number;
   readonly loading: boolean;
   readonly loadingMarketPrice: boolean;
@@ -196,7 +200,7 @@ interface IAppData {
   readonly totalSupply?: number;
   readonly treasuryBalance?: number;
   readonly treasuryMarketValue?: number;
-  readonly endBlock?: number;
+  readonly endTime?: number;
   readonly blockRateSeconds?: number;
 }
 

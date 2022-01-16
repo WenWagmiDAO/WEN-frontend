@@ -1,8 +1,8 @@
 import { ethers, BigNumber } from "ethers";
 import { addresses } from "../constants";
 import { abi as ierc20ABI } from "../abi/IERC20.json";
-import { abi as OlympusStakingABI } from "../abi/OlympusStakingv2.json";
-import { abi as StakingHelperABI } from "../abi/StakingHelper.json";
+import { abi as OlympusStakingABI } from "../abi/StakingContract.json";
+import { abi as StakingHelperABI } from "../abi/StakingHelperContract.json";
 import { clearPendingTxn, fetchPendingTxns, getStakingTypeText } from "./PendingTxnsSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchAccountSuccess, getBalances } from "./AccountSlice";
